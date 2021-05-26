@@ -3,14 +3,15 @@
   <span *ngSwitchCase="'home'">
     <app-nav [categories]="categories" (callSelectC)="onSelect($event)" (callSelectPage)="page = $event"> </app-nav>
     <span [ngSwitch]="category">
-      <span *ngSwitchCase="'visited'">
+      <span *ngSwitchCase="'visited'" class="container">
         <app-visited-card *ngFor="let item of visited" [visited]="item" appOnHover> </app-visited-card>
         <button mat-fab class="action-btn" (click)="openDialog()">
           <mat-icon>add</mat-icon>
         </button>
       </span>
       <span *ngSwitchDefault class="container">
-        <app-evidence-card *ngFor="let item of evidences" [evidence]="item" appOnHover (getEvidence)="onVisited($event)"> </app-evidence-card>
+        <app-evidence-card *ngFor="let item of evidences" [evidence]="item" appOnHover
+          (getEvidence)="onVisited($event)"> </app-evidence-card>
         <button mat-fab class="action-btn" (click)="openDialog()">
           <mat-icon>add</mat-icon>
         </button>
