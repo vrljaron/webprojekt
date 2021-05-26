@@ -7,11 +7,12 @@ import { Evidence } from '../../../shared/models/evidence.model';
   styleUrls: ['./visited-card.component.scss']
 })
 export class VisitedCardComponent implements OnInit {
-  @Input() visited?: Evidence = {} as any;
+  @Input() visited?: Evidence;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.visited);
   }
 
 }

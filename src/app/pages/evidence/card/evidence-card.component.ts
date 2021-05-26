@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Evidence } from '../../../shared/models/evidence.model';
 
 @Component({
@@ -8,10 +8,13 @@ import { Evidence } from '../../../shared/models/evidence.model';
 })
 export class EvidenceCardComponent implements OnInit {
   @Input() evidence?: Evidence;
+  @Input() hasAction = true;
+  @Output() getEvidence = new EventEmitter<Evidence>();
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

@@ -30,17 +30,24 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onSelect(event: string): void {
-    console.log(event);
     this.category = event;
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(EvidenceAddComponent, {});
     dialogRef.afterClosed().subscribe(result => {
-      if (result && result.title) {
+      this.visited.push(result);
+      if (result) {
         this.evidences.push(result);
       }
     });
+  }
+
+  onVisited(evidence: Evidence): void {
+    if(!this.visited.some(x => x === evidence)){
+      console.log('igaz');
+      this.visited.push(evidence);
+    }
   }
 
 }

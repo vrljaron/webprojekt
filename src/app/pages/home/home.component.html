@@ -10,7 +10,7 @@
         </button>
       </span>
       <span *ngSwitchDefault class="container">
-        <app-evidence-card *ngFor="let item of evidences" [evidence]="item" appOnHover> </app-evidence-card>
+        <app-evidence-card *ngFor="let item of evidences" [evidence]="item" appOnHover (getEvidence)="onVisited($event)"> </app-evidence-card>
         <button mat-fab class="action-btn" (click)="openDialog()">
           <mat-icon>add</mat-icon>
         </button>
