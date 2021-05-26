@@ -1,7 +1,24 @@
-<span [ngSwitch]="category">
-  <span *ngSwitchCase="'edit'" class="container">
+<span [ngSwitch]="page">
+
+  <span *ngSwitchCase="'home'">
+    <app-nav [categories]="categories"> </app-nav>
+    <span class="container">
+      <app-evidence-card *ngFor="let item of evidences" [evidence]="item" appOnHover> </app-evidence-card>
+      <button mat-fab class="action-btn" (click)="openDialog()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </span>
   </span>
-  <span *ngSwitchDefault class="container">
-    <app-evidence-card *ngFor="let item of evidences" [evidence] = "item" appOnHover> </app-evidence-card>
+
+  <span *ngSwitchCase="'registration'">
+    <app-registration></app-registration>
   </span>
+
+  <span *ngSwitchCase="'edit'">
+  </span>
+
+  <span *ngSwitchDefault>
+    <app-login></app-login>
+  </span>
+
 </span>
