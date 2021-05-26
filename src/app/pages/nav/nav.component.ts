@@ -7,8 +7,6 @@ import { Category } from 'src/app/shared/models/category.model';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  sCategoryTitle? : string;
-  @Input() selectedCategoryTitle? : string;
   @Input() categories?: Category[];
   constructor() { }
 

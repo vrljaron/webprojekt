@@ -3,20 +3,14 @@ import { Category } from '../models/category.model';
 export const CATEGORIES: Category[] = [
     {
         title: 'Evidences',
-        icon: 'movie',
-        value: 'movie',
+        icon: 'description',
+        value: 'evidences',
         color: 'teal'
     },
     {
-        title: 'Játékok',
-        icon: 'games',
-        value: 'game',
-        color: 'cyan'
-    },
-    {
-        title: 'kedvencek',
-        icon: 'star',
-        value: 'favorite',
+        title: 'Visited',
+        icon: 'visibility',
+        value: 'visited',
         color: '#c2185b'
     }
 ];
