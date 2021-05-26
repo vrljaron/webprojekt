@@ -3,6 +3,7 @@ import { CATEGORIES } from './../../shared/database/category.database';
 import { EVIDENCES } from './../../shared/database/evidence.database';
 import { MatDialog } from '@angular/material/dialog';
 import { EvidenceAddComponent } from '../evidence/add/evidence-add.component';
+import { Evidence } from 'src/app/shared/models/evidence.model';
 
 @Component({
   selector: 'app-home',
@@ -14,17 +15,23 @@ export class HomeComponent implements OnInit, OnDestroy {
   categories = CATEGORIES;
   category? = '';
   page = '';
+  visited: Evidence[] = [];
 
 
   constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.category = 'evidence';
-    this.page = 'home';
+    this.page = '';
   }
 
   ngOnDestroy(): void {
     delete this.category;
+  }
+
+  onSelect(event: string): void {
+    console.log(event);
+    this.category = event;
   }
 
   openDialog(): void {

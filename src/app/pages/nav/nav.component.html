@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <a mat-button>
+    <a mat-button (click)="select('')">
       Evidences
     </a>
-    <button mat-button *ngFor="let item of categories">
+    <button mat-button *ngFor="let item of categories" (click)="select(item.value)">
       {{item.title}}&nbsp;
       <mat-icon>{{item.icon}}</mat-icon>
     </button>
@@ -16,15 +16,15 @@
     <mat-menu #menu="matMenu">
       <button mat-menu-item disabled>
         <mat-icon>person</mat-icon>
-        <span>Profil</span>
+        <span>Profile</span>
       </button>
       <button mat-menu-item disabled>
         <mat-icon>settings</mat-icon>
-        <span>Beállítások</span>
+        <span>Options</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="callSelectPage.emit('')">
         <mat-icon>arrow_back</mat-icon>
-        <span>Kijelentkezés</span>
+        <span>Logout</span>
       </button>
     </mat-menu>
 

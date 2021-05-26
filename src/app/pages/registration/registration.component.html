@@ -3,9 +3,10 @@
     <form>
       <h3>Regisztráció</h3>
       <br>
-      <div><button mat-button color="accent">BEJELENTKEZÉS</button></div>
+      <div><button mat-button color="accent" (click)="callSelectPage.emit('')">BEJELENTKEZÉS</button></div>
       <br>
-      <button mat-raised-button color="primary" class="max-width">REGISZTRÁCIÓ</button>
+      <button mat-raised-button color="primary" class="max-width"
+      disabled (click)="callSelectPage.emit('home')">REGISZTRÁCIÓ</button>
     </form>
   </mat-card>
 </div>

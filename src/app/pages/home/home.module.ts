@@ -9,12 +9,13 @@ import { NavModule } from '../nav/nav.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { VisitedCardModule } from '../visited/card/visited-card.module';
 
 
 @NgModule({
   declarations: [HomeComponent],
   imports: [
-    CommonModule, EvidenceCardModule, OnHoverModule, LoginModule, RegistrationModule, NavModule, MatButtonModule, MatIconModule, MatDialogModule
+    CommonModule, EvidenceCardModule, VisitedCardModule, OnHoverModule, LoginModule, RegistrationModule, NavModule, MatButtonModule, MatIconModule, MatDialogModule
   ],
   exports: [HomeComponent]
 })

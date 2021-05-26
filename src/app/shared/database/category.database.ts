@@ -2,7 +2,7 @@ import { Category } from '../models/category.model';
 
 export const CATEGORIES: Category[] = [
     {
-        title: 'Evidences',
+        title: 'All',
         icon: 'description',
         value: 'evidences',
         color: 'teal'
