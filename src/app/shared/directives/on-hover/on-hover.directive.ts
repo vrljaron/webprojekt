@@ -8,11 +8,11 @@ export class OnHoverDirective {
   constructor(private renderer: Renderer2, private el: ElementRef) { }
 
   @HostListener('mouseenter') onMouseEnter(): void{
-    this.renderer.addClass(this.el.nativeElement,'mat-elevation');
+    this.renderer.addClass(this.el.nativeElement,'mat-elevation-z6');
   }
 
   @HostListener('mouseleave') onMouseLeave(): void{
-    this.renderer.removeClass(this.el.nativeElement,'mat-elevation');
+    this.renderer.removeClass(this.el.nativeElement,'mat-elevation-z6');
   }
 
 }

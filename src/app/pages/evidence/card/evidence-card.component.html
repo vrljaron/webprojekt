@@ -1,1 +1,9 @@
-<p>evidence-card works!</p>
+<mat-card *ngIf="evidence">
+    <mat-card-header>
+        <mat-card-title>{{evidence.name}} </mat-card-title>
+        <mat-card-subtitle *ngIf="evidence.title">{{evidence.title}} </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+    </mat-card-content>
+</mat-card>

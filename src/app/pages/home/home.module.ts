@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { EvidenceCardModule } from '../evidence/card/evidence-card.module';
-import { EvidenceCardComponent } from '../evidence/card/evidence-card.component';
+import { OnHoverModule } from 'src/app/shared/directives/on-hover/on-hover.module';
 
 
 @NgModule({
-  declarations: [HomeComponent,EvidenceCardComponent],
+  declarations: [HomeComponent],
   imports: [
-    CommonModule,
-    EvidenceCardModule,
+    CommonModule,EvidenceCardModule,OnHoverModule
   ],
   exports: [HomeComponent]
 })
