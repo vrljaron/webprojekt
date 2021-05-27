@@ -1,6 +1,16 @@
 .action-btn {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-  }
-  
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
+
+.searchbar {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-left: 16px;
+}
+
+.searchbar input {
+  width: 100%;
+}

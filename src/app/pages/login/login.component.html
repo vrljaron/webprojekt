@@ -1,16 +1,19 @@
 <div class="centering">
-    <mat-card class="log-card">
-      <form>
-        <h3>Bejelentkezés</h3>
-        <br>
-        <div><button mat-button color="accent" (click)="navTo('/registration')">REGISZTRÁCIÓ</button></div>
-        <script>
-          console.log('pushed');
-        </script>
-        <br>
-        <button mat-raised-button color="primary" class="max-width"
-        (click)="login()">BEJELENTKEZÉS</button>
-      </form>
-    </mat-card>
-  </div>
-  
+  <mat-card class="log-card">
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <h3>Login</h3>
+      <mat-form-field class="max-width">
+        <mat-label>E-mail</mat-label>
+        <input type="email" name="email" matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field class="max-width">
+        <mat-label>Password</mat-label>
+        <input type="password" name="password" matInput minlength="6" formControlName="password">
+      </mat-form-field>
+      <br>
+      <div><button mat-button color="accent" (click)="navTo('/registration')">REGISTRATION</button></div>
+      <br>
+      <button type="submit" mat-raised-button color="primary" class="max-width" [disabled]="form.invalid">LOGIN</button>
+    </form>
+  </mat-card>
+</div>

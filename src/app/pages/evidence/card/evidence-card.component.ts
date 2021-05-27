@@ -7,17 +7,16 @@ import { Evidence } from '../../../shared/models/evidence.model';
   styleUrls: ['./evidence-card.component.scss']
 })
 export class EvidenceCardComponent implements OnInit {
-  visited = false;
   @Input() evidence?: Evidence;
   @Output() getEvidence = new EventEmitter<Evidence>();
+  @Output() callVisited = new EventEmitter<Evidence>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
   onClick(): void {
-    console.log(this.evidence);
-    this.getEvidence.emit(this.evidence);
+    console.log(this.callVisited.emit(this.evidence));
   }
 
 }

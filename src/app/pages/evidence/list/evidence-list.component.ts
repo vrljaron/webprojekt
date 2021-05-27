@@ -5,6 +5,8 @@ import { Evidence } from 'src/app/shared/models/evidence.model';
 import { MatDialog } from '@angular/material/dialog';
 import { EvidenceAddComponent } from '../add/evidence-add.component';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+import { debounceTime, map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-evidence-list',
@@ -15,10 +17,20 @@ export class EvidenceListComponent implements OnInit {
 
   list: Observable<Evidence[]> | null = null;
 
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]> | null = null;
+
   constructor(private service: FbBaseService<Evidence>, private dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     this.get();
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        debounceTime(300),
+        map(value => this._filter(value))
+      );
   }
 
   get(): void{
@@ -40,6 +52,11 @@ export class EvidenceListComponent implements OnInit {
 
   onGetEvidence(event: Evidence): void{
     this.router.navigateByUrl('/details/Evidence/' + event.id);
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
 }

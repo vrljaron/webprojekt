@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,14 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
-  constructor(private router: Router) {}
+  form: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', [Validators.minLength(6), Validators.required])
+  });
+  constructor(private router: Router) { }
 
   navTo(url: string): void {
     this.router.navigateByUrl(url);
   }
 
-  login(): void{
+  login(): void {
     this.navTo('/home');
   }
 

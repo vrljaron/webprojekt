@@ -6,7 +6,7 @@ const routes: Routes = [
     {
         path: '',
         component: RegistrationComponent,
-        data: { title: 'Regisztráció - Webkert' }
+        data: { title: 'Registration - Webkert' }
     }
 ];
 

@@ -1,4 +1,4 @@
-<mat-card *ngIf="evidence" (click)="getEvidence.emit(evidence); onClick()" appOnHover>
+<mat-card *ngIf="evidence" (click)="getEvidence.emit(evidence)" appOnHover>
     <mat-card-header>
         <mat-card-title>{{evidence.title}} </mat-card-title>
         <mat-card-subtitle *ngIf="evidence.title">{{evidence.shortTitle}} </mat-card-subtitle>

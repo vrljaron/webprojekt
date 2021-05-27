@@ -22,7 +22,6 @@ export class DetailsComponent implements OnInit {
       this.dataNameStr = params.dataNameStr;
       this.getItem();
     }
-    console.log(this.id, this.dataNameStr);
   }
 
     getItem(): void {

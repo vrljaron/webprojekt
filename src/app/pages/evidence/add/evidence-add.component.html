@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-  <h3>Játék felvétel</h3>
+  <h3>New Evidence</h3>
   <mat-form-field class="max-width">
     <mat-label>Title</mat-label>
     <input matInput placeholder="Title" focus formControlName="title" required>
@@ -15,7 +15,7 @@
       cdkAutosizeMaxRows="5"></textarea>
   </mat-form-field>
   <div style="display: flex; justify-content: flex-end;">
-    <button mat-button (click)="dialogRef.close()" class="margin-right">MÉGSEM</button>
-    <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">FELVÉTEL</button>
+    <button mat-button (click)="dialogRef.close()" class="margin-right">CANCEL</button>
+    <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">SAVE</button>
   </div>
 </form>

@@ -1,11 +1,36 @@
 <div class="centering">
   <mat-card class="reg-card">
-    <form>
-      <h3>Regisztráció</h3>
+    <form [formGroup]="form" (ngSubmit)="registration()">
+      <h3>Registration</h3>
+      <mat-form-field class="max-width">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" name="nickname" required formControlName="username">
+      </mat-form-field>
+      <mat-form-field class="max-width">
+        <mat-label>E-mail</mat-label>
+        <input type="email" name="email" matInput formControlName="email">
+        <mat-hint>with @</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="max-width">
+        <mat-label>Password</mat-label>
+        <input type="password" name="password" matInput formControlName="password1">
+        <mat-hint align="end">min. length 6 / {{form.value.password1.length}}</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="max-width">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" name="password" matInput #password2 
+          formControlName="password2">
+        <mat-hint align="end">min. length 6 / {{password2.value.length}}</mat-hint>
+      </mat-form-field>
+      <mat-chip-list *ngIf="error">
+        <mat-chip color="warn" class="max-width" style="margin-top: 16px;" selected>
+          Password confirmation does not match
+        </mat-chip>
+      </mat-chip-list>
       <br>
-      <div><button mat-button color="accent" [routerLink]="[ '/login' ]">BEJELENTKEZÉS</button></div>
+      <div><button mat-button color="accent" [routerLink]="[ '/login' ]">LOGIN</button></div>
       <br>
-      <button mat-raised-button color="primary" class="max-width" disabled>REGISZTRÁCIÓ</button>
+      <button mat-raised-button color="primary" class="max-width" disabled>REGISTRATION</button>
     </form>
   </mat-card>
 </div>

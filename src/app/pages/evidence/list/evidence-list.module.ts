@@ -9,6 +9,9 @@ import { EvidenceListRoutingModule } from './evidence-list-routing.module';
 import { ContainerModule } from 'src/app/shared/components/container/container.module';
 import { EvidenceCardModule } from '../card/evidence-card.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   imports: [
     CommonModule, EvidenceListRoutingModule, MatToolbarModule, ContainerModule, EvidenceCardModule, MatButtonModule,
-    MatIconModule, EvidenceAddModule, MatDialogModule
+    MatIconModule, EvidenceAddModule, MatDialogModule, MatAutocompleteModule, MatInputModule, FormsModule, ReactiveFormsModule
   ],
   exports: [EvidenceListComponent]
 })
