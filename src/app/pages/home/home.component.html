@@ -1,33 +1,3 @@
-<span [ngSwitch]="page">
+<app-nav></app-nav>
 
-  <span *ngSwitchCase="'home'">
-    <app-nav [categories]="categories" (callSelectC)="onSelect($event)" (callSelectPage)="page = $event"> </app-nav>
-    <span [ngSwitch]="category">
-      <span *ngSwitchCase="'visited'" class="container">
-        <app-visited-card *ngFor="let item of visited" [visited]="item" appOnHover> </app-visited-card>
-        <button mat-fab class="action-btn" (click)="openDialog()">
-          <mat-icon>add</mat-icon>
-        </button>
-      </span>
-      <span *ngSwitchDefault class="container">
-        <app-evidence-card *ngFor="let item of evidences" [evidence]="item" appOnHover
-          (getEvidence)="onVisited($event)"> </app-evidence-card>
-        <button mat-fab class="action-btn" (click)="openDialog()">
-          <mat-icon>add</mat-icon>
-        </button>
-      </span>
-    </span>
-  </span>
-
-  <span *ngSwitchCase="'registration'">
-    <app-registration (callSelectPage)="page = $event"></app-registration>
-  </span>
-
-  <span *ngSwitchCase="'edit'">
-  </span>
-
-  <span *ngSwitchDefault>
-    <app-login (callSelectPage)="page = $event"></app-login>
-  </span>
-
-</span>
+<router-outlet></router-outlet>

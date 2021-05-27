@@ -4,11 +4,12 @@ import { MatCardModule } from '@angular/material/card';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EvidenceCardComponent } from './evidence-card.component';
+import { OnHoverModule } from 'src/app/shared/directives/on-hover/on-hover.module';
 
 @NgModule({
   declarations: [EvidenceCardComponent],
   imports: [
-    CommonModule, MatCardModule, MatIconModule, MatButtonModule
+    CommonModule, MatCardModule, MatIconModule, MatButtonModule, OnHoverModule
   ],
   exports: [EvidenceCardComponent]
 })
