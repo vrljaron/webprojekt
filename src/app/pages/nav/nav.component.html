@@ -14,17 +14,17 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item disabled>
+      <button mat-menu-item [routerLink]="[ '/profile' ]">
         <mat-icon>person</mat-icon>
-        <span>Profile</span>
+        <span>Profil</span>
       </button>
       <button mat-menu-item disabled>
         <mat-icon>settings</mat-icon>
-        <span>Options</span>
+        <span>Beállítások</span>
       </button>
       <button mat-menu-item (click)="logout()">
         <mat-icon>arrow_back</mat-icon>
-        <span>Logout</span>
+        <span>Kijelentkezés</span>
       </button>
     </mat-menu>
 

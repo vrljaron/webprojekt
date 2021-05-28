@@ -6,22 +6,23 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { UserProfileRoutingModule } from './user-profile-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EvidenceAddComponent } from './evidence-add.component';
+import { UserProfileComponent } from './user-profile.component';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatDialogModule} from '@angular/material/dialog';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+
 
 
 @NgModule({
   declarations: [
-    EvidenceAddComponent
+    UserProfileComponent
   ],
   imports: [
     CommonModule,
+    UserProfileRoutingModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -30,11 +31,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     ContainerModule,
     MatListModule,
     MatRadioModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    ScrollingModule
-  ],
-  entryComponents: [EvidenceAddComponent],
-  exports: [EvidenceAddComponent]
+    MatDatepickerModule
+  ]
 })
-export class EvidenceAddModule { }
+export class UserProfileModule { }

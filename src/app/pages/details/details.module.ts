@@ -9,6 +9,12 @@ import { DetailsRoutingModule } from './details-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailsComponent } from './details.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ContainerModule } from 'src/app/shared/components/container/container.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +23,16 @@ import { DetailsComponent } from './details.component';
   imports: [
     CommonModule, FormsModule, ReactiveFormsModule,
     DetailsRoutingModule, MatCardModule, MatButtonModule, MatIconModule,
-    MatTabsModule, MatFormFieldModule, MatInputModule
+    MatTabsModule, MatFormFieldModule, MatInputModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule, MatInputModule, ReactiveFormsModule,
+    ContainerModule,
+    MatListModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatDialogModule,
   ],
   exports: [DetailsComponent]
 })

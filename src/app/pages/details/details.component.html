@@ -14,13 +14,108 @@
   <mat-tab-group>
     <mat-tab label="Áttekintés">
     </mat-tab>
-    <mat-tab label="Megjegyzések">
+    <mat-tab label="Szerkesztés">
       <mat-card class="no-box transparent">
-        <form>
-          <mat-form-field class="max-width">
-            <mat-label>Megjegyzés írása</mat-label>
-            <textarea matInput placeholder="Pl. Jajj de jó film..." cdkTextareaAutosize cdkAutosizeMinRows="4"></textarea>
-          </mat-form-field>
+            <form *ngIf="form" [formGroup]="form" layout="column">
+              <h3>{{form.value.title}}Szerkesztés</h3>
+              <mat-form-field class="max-width">
+                <mat-label>Cím</mat-label>
+                <input matInput placeholder="Title" focus formControlName="title" required>
+              </mat-form-field>
+              <mat-form-field class="max-width">
+                <mat-label>Rövid cím</mat-label>
+                <textarea placeholder="short title" formControlName="shortTitle" matInput cdkTextareaAutosize cdkAutosizeMinRows="2"
+                  cdkAutosizeMaxRows="5"></textarea>
+              </mat-form-field>
+              <mat-form-field class="max-width">
+                <mat-label>Verzió szám</mat-label>
+                <textarea placeholder="version" formControlName="version" matInput cdkTextareaAutosize cdkAutosizeMinRows="2"
+                  cdkAutosizeMaxRows="5"></textarea>
+              </mat-form-field>
+              <mat-radio-group formControlName="status" class="max-width">
+                <table class="max-width margin-bottom" cellspacing="0">
+                  <tr>
+                    <td style="padding-bottom: 15px;">
+                      <mat-label>Státusz</mat-label>
+                    </td>
+                  </tr>
+                  <tr style="display: flex; align-items: center;">
+                    <td style="flex: 1; padding-left: 8px;">
+                      <mat-radio-button value="draft">Draft</mat-radio-button>
+                      <mat-radio-button value="active">Active</mat-radio-button>
+                      <mat-radio-button value="retired">Retired</mat-radio-button>
+                      <mat-radio-button value="unknown">Unknown</mat-radio-button>
+                    </td>
+                  </tr>
+                </table>
+              </mat-radio-group>
+              <mat-form-field class="max-width">
+                <mat-label>Szerkesztő</mat-label>
+                <textarea placeholder="publisher" formControlName="publisher" matInput cdkTextareaAutosize cdkAutosizeMinRows="2"
+                  cdkAutosizeMaxRows="5"></textarea>
+              </mat-form-field>
+            
+              <mat-card class="margin-bottom" formArrayName="topic">
+                <mat-card-header>
+                  <mat-card-subtitle>Topicok</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <button mat-raised-button color="secondary" class="max-width margin-bottom" (click)="addTopic()">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                  <span *ngFor="let item of getTopic.controls; let i = index" class="max-width" style="display: flex;">
+                    <mat-form-field [formGroupName]="i" style="flex: 1 1;">
+                      <mat-label>Topic {{i + 1}}.</mat-label>
+                      <input type="text" name="topic" formControlName="text" matInput>
+                    </mat-form-field>
+                    <button mat-icon-button color="warn" (click)="removeTopic(i)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </span>
+                </mat-card-content>
+              </mat-card>
+            
+              <mat-form-field class="max-width">
+                <mat-label>Tartalom</mat-label>
+                <textarea placeholder="description" formControlName="description" matInput cdkTextareaAutosize
+                  cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"></textarea>
+              </mat-form-field>
+            
+              <mat-card class="margin-bottom">
+                <mat-card-header>
+                  <mat-card-subtitle>Kapcsolattartási információk</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <table class="max-width" cellspacing="0" formArrayName="contact">
+                    <tr>
+                      <td formGroupName="0">
+                        <mat-form-field class="max-width">
+                          <mat-label>E-mail</mat-label>
+                          <input type="email" name="email" matInput formControlName="value">
+                        </mat-form-field>
+                      </td>
+                      <td formGroupName="1">
+                        <mat-form-field class="max-width">
+                          <mat-label>Telefon</mat-label>
+                          <input type="phone" formControlName="value" matInput>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </mat-card-content>
+              </mat-card>
+            
+              <mat-form-field appearance="fill" class="max-width">
+                <mat-label>Kelt. időpontja</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="approvalDate" autocomplete="new-password">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            
+              <mat-form-field appearance="fill" class="max-width">
+                <mat-label>Populáció a kutatás számára</mat-label>
+                <input matInput type="number"  placeholder="0" formControlName="exposureBackground">
+              </mat-form-field>
           <div style="display: flex; justify-content: flex-end;">
             <button mat-button type="reset" class="margin-right">
               CANCEL
