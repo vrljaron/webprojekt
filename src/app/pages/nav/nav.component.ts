@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { CATEGORIES } from 'src/app/shared/database/category.database';
 
 @Component({
@@ -10,9 +11,10 @@ import { CATEGORIES } from 'src/app/shared/database/category.database';
 export class NavComponent {
   categories = CATEGORIES;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   logout(): void {
+    this.authService.logout();
     this.router.navigateByUrl('login');
   }
 }

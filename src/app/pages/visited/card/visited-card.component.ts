@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Evidence } from '../../../shared/models/evidence.model';
 
 @Component({
@@ -7,8 +7,7 @@ import { Evidence } from '../../../shared/models/evidence.model';
   styleUrls: ['./visited-card.component.scss']
 })
 export class VisitedCardComponent implements OnInit {
-  @Input() visited?: Evidence;
-
+  @Input() isVisited: Evidence = {} as any;
   constructor() { }
 
   ngOnInit(): void {

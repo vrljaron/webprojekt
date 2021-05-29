@@ -1,3 +1,4 @@
+import { EvidenceCardModule } from './../../evidence/card/evidence-card.module';
 import { VisitedCardComponent } from '../card/visited-card.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forChild(routes), EvidenceCardModule],
     exports: [RouterModule],
 })
-export class VisitedCardRoutingModule { }
+export class VisitedListRoutingModule { }

@@ -12,6 +12,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   ],
   imports: [
     CommonModule, EvidenceListRoutingModule, MatToolbarModule, ContainerModule, EvidenceCardModule, MatButtonModule,
-    MatIconModule, EvidenceAddModule, MatDialogModule, MatAutocompleteModule, MatInputModule, FormsModule, ReactiveFormsModule
+    MatIconModule, EvidenceAddModule, MatDialogModule, MatAutocompleteModule, MatInputModule, FormsModule, ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   exports: [EvidenceListComponent]
 })
