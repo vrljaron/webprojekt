@@ -38,10 +38,6 @@ export class UserProfileComponent implements OnInit {
     const formArray = this.form?.get('address') as FormArray;
     formArray.removeAt(index);
   }
-
-  log(): void {
-    console.log(this.form?.value);
-  }
   close(): void {
     this.location.back();
   }

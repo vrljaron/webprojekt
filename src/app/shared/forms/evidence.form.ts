@@ -1,23 +1,15 @@
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { getContactPoint } from './contact-point.form';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { getIdentifierForm } from './identifier.form';
 
 export function getEvidenceForm(): FormGroup {
     return new FormGroup({
-        identifier: new FormControl([getIdentifierForm('uid')]),
+        id: new FormControl([getIdentifierForm('uid')]),
         version: new FormControl(),
-        name: new FormControl(),
-        title: new FormControl(),
-        shortTitle: new FormControl(),
-        status: new FormControl('unknown'),
+        title: new FormControl('',Validators.required),
+        shortTitle: new FormControl('',Validators.required),
+        status: new FormControl('unknown',Validators.required),
         publisher: new FormControl(),
-        contact: new FormArray([
-            getContactPoint('email'),
-            getContactPoint('phone'),
-        ]),
         description: new FormControl(),
-        approvalDate: new FormControl(),
-        exposureBackground: new FormControl(),
-        topic: new FormArray([]),
+        exposureBackground: new FormControl(0,Validators.required),
     });
 }

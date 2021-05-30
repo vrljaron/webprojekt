@@ -1,8 +1,9 @@
+import { Evidence } from 'src/app/shared/models/evidence.model';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FbBaseService } from 'src/app/services/fb-base.service';
 import { getEvidenceForm } from 'src/app/shared/forms/evidence.form';
-import { getTopicForm } from 'src/app/shared/forms/topic.form';
 
 
 @Component({
@@ -14,7 +15,9 @@ export class EvidenceAddComponent implements OnInit {
 
   form: FormGroup | null = null;
 
-  constructor(public dialogRef: MatDialogRef<EvidenceAddComponent>) { }
+  inData: Evidence = {} as any;
+
+  constructor(public dialogRef: MatDialogRef<EvidenceAddComponent>,private fbService: FbBaseService<Evidence>) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -22,20 +25,6 @@ export class EvidenceAddComponent implements OnInit {
 
   initForm(): void {
     this.form = getEvidenceForm();
-  }
-
-  get getTopic(): FormArray {
-    return this.form?.get('topic') as FormArray;
-  }
-
-  addTopic(): void {
-    const idFormArray = this.form?.get('topic') as FormArray;
-    idFormArray.push(getTopicForm());
-  }
-
-  removeTopic(index: number): void {
-    const formArray = this.form?.get('topic') as FormArray;
-    formArray.removeAt(index);
   }
 
   log(): void {

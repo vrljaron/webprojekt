@@ -38,61 +38,10 @@
       cdkAutosizeMaxRows="5"></textarea>
   </mat-form-field>
 
-  <mat-card class="margin-bottom" formArrayName="topic">
-    <mat-card-header>
-      <mat-card-subtitle>Topicok</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <button mat-raised-button color="secondary" class="max-width margin-bottom" (click)="addTopic()">
-        <mat-icon>add</mat-icon>
-      </button>
-      <span *ngFor="let item of getTopic.controls; let i = index" class="max-width" style="display: flex;">
-        <mat-form-field [formGroupName]="i" style="flex: 1 1;">
-          <mat-label>Topic {{i + 1}}.</mat-label>
-          <input type="text" name="topic" formControlName="text" matInput>
-        </mat-form-field>
-        <button mat-icon-button color="warn" (click)="removeTopic(i)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </span>
-    </mat-card-content>
-  </mat-card>
-
   <mat-form-field class="max-width">
     <mat-label>Tartalom</mat-label>
     <textarea placeholder="description" formControlName="description" matInput cdkTextareaAutosize
       cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"></textarea>
-  </mat-form-field>
-
-  <mat-card class="margin-bottom">
-    <mat-card-header>
-      <mat-card-subtitle>Kapcsolattartási információk</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <table class="max-width" cellspacing="0" formArrayName="contact">
-        <tr>
-          <td formGroupName="0">
-            <mat-form-field class="max-width">
-              <mat-label>E-mail</mat-label>
-              <input type="email" name="email" matInput formControlName="value">
-            </mat-form-field>
-          </td>
-          <td formGroupName="1">
-            <mat-form-field class="max-width">
-              <mat-label>Telefon</mat-label>
-              <input type="phone" formControlName="value" matInput>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-form-field appearance="fill" class="max-width">
-    <mat-label>Kelt. időpontja</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="approvalDate" autocomplete="new-password">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="max-width">
@@ -102,8 +51,8 @@
 
 
   <div style="display: flex; justify-content: flex-end;">
-    <button mat-button (click)="dialogRef.close()" class="margin-right">CANCEL</button>
-    <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">SAVE</button>
+    <button mat-button (click)="dialogRef.close()" class="margin-right">MÉGSEM</button>
+    <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">MENTÉS</button>
   </div>
 </form>
 </cdk-virtual-scroll-viewport>

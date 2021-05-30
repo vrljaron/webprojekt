@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
     }
     this.authService.login(this.form.value.email, this.form.value.password).then(
       result => {
-        console.log(result);
         this.navTo('/home');
       },
       (error) => {

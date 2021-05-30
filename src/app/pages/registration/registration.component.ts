@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -15,19 +16,40 @@ export class RegistrationComponent {
     password2: new FormControl('', [Validators.minLength(6), Validators.required]),
   });
 
-  error = false;
+  alertMessage = '';
+  alertsList: any = {
+    user: () => 'Ez az e-mail cím már rendelkezik egy fiókkal.',
+    server: () => 'A szolgáltatás nem elérhető.',
+    false: () => ''
+  };
 
-  constructor(private router: Router) { }
+  @HostListener('document:keydown.enter') onKeydownHandler() {
+    this.registration();
+  }
+
+  constructor(private router: Router, private authService: AuthService) { }
+
+  navTo(url: string): void {
+    this.router.navigateByUrl(url);
+  }
 
   registration(): void {
-    this.error = false;
-    if (this.form.valid) {
-      if (this.form.value.password1 === this.form.value.password2) {
-        console.log(this.form.value);
-        this.router.navigateByUrl('/login');
-        return;
-      }
+    if (this.form.invalid) {
+      return;
     }
-    this.error = true;
+    if (this.form.value.password1 !== this.form.value.password2){
+      this.alertMessage = 'Hibás ellenörző jelszó.';
+      return;
+    }
+    this.authService.createUser(this.form.value.email, this.form.value.password1, this.form.value.username).then(
+      result => {
+        this.navTo('/login');
+      },
+      (error) => {
+        console.log(error);
+        this.alertMessage = (error.code === 'auth/email-already-in-use' || error.code === 'auth/wrong-password')
+          ? this.alertsList.user() : this.alertsList.server();
+      }
+    );
   }
 }

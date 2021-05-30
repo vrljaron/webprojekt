@@ -23,4 +23,21 @@ export class AuthService {
         return this.afAuth.authState;
     }
 
+    updateCurrentUserName(name: string) {
+        return this.afAuth.currentUser.then((user) => {
+          return user?.updateProfile({
+            displayName: name
+          });
+        });
+      }
+  
+       createUser(email: string, password: string, name?: string) {
+         return this.afAuth.createUserWithEmailAndPassword(email, password).then((result) => {
+           if (name) {
+             this.updateCurrentUserName(name);
+           }
+           return result.user;
+         });
+       }
+
 }

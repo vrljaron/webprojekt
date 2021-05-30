@@ -1,3 +1,4 @@
+import { VisitedCardModule } from './../../visited/card/visited-card.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EvidenceListComponent } from './evidence-list.component';
@@ -21,7 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   imports: [
     CommonModule, EvidenceListRoutingModule, MatToolbarModule, ContainerModule, EvidenceCardModule, MatButtonModule,
     MatIconModule, EvidenceAddModule, MatDialogModule, MatAutocompleteModule, MatInputModule, FormsModule, ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule, VisitedCardModule
   ],
   exports: [EvidenceListComponent]
 })

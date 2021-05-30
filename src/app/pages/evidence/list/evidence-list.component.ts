@@ -59,9 +59,7 @@ export class EvidenceListComponent implements OnInit {
   }
 
   onGetEvidence(event: Evidence): void{
-    console.log(event);
     event.visited = true;
-    console.log(event);
     this.router.navigateByUrl('/details/Evidence/' + event.id);
   }
 
