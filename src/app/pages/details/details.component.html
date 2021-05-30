@@ -1,4 +1,4 @@
-<mat-card *ngIf="inData | async as item" class="det-img">
+<mat-card class="det-img">
   <div style="display: flex;">
     <span style="flex: 1 1;"></span>
     <button mat-button (click)="close()">
@@ -7,33 +7,44 @@
   </div>
   <span style="flex: 1 1;"></span>
   <div class="det-title">
-    <h1>{{item.title}}</h1>
-    <p>{{item.shortTitle}}</p>
+    <h1>{{ev.title}}</h1>
+    <p>{{ev.shortTitle}}</p>
   </div>
 </mat-card>
-<mat-tab-group *ngIf="inData | async as item">
+<span class="centering" *ngIf="pageState===''">
+  Valami hiba történt!
+</span>
+
+<span class="centering" *ngIf="pageState==='loading'">
+  <mat-spinner></mat-spinner>
+</span>
+
+<span class="centering" *ngIf="pageState==='noData'">
+  Nincs adat.
+</span>
+<mat-tab-group *ngIf="pageState==='data'">
   <mat-tab label="Áttekintés">
     <mat-card class="no-box transparent">
-      <div *ngIf="inData | async as item">
-        <mat-card-title>{{item.title}}</mat-card-title>
+      <div *ngIf="ev">
+        <mat-card-title>{{ev.title}}</mat-card-title>
 
-        <mat-card-subtitle>{{item.shortTitle}}</mat-card-subtitle>
+        <mat-card-subtitle>{{ev.shortTitle}}</mat-card-subtitle>
 
         <mat-card-content>
           <div>
-            Verziószám: {{item.version}}
+            Verziószám: {{ev.version}}
           </div>
           <div>
-            Státusz: {{item.status}}
+            Státusz: {{ev.status}}
           </div>
           <div>
-            {{item.description}}
+            {{ev.description}}
           </div>
           <div>
-            Teszteltek száma: {{item.exposureBackground}}
+            Teszteltek száma: {{ev.exposureBackground}}
           </div>
           <div>
-            Készítette: {{item.publisher}}
+            Készítette: {{ev.publisher}}
           </div>
         </mat-card-content>
       </div>
@@ -43,10 +54,10 @@
   <mat-tab label="Szerkesztés">
     <mat-card class="no-box transparent">
       <form *ngIf="form" [formGroup]="form" layout="column">
-        <h3>{{item.title}} Szerkesztés</h3>
+        <h3>{{ev.title}} Szerkesztés</h3>
         <mat-form-field class="max-width">
           <mat-label>Cím</mat-label>
-          <input matInput placeholder="{{item.title}}" focus formControlName="title" required>
+          <input matInput placeholder="title" focus formControlName="title" required>
         </mat-form-field>
         <mat-form-field class="max-width">
           <mat-label>Rövid cím</mat-label>
@@ -91,12 +102,15 @@
           <mat-label>Populáció a kutatás számára</mat-label>
           <input matInput type="number" placeholder="0" formControlName="exposureBackground">
         </mat-form-field>
+        <button mat-raised-button type="delete" color="primary" class="margin-left" (click)="delete()">
+          TÖRLÉS
+        </button>
         <div style="display: flex; justify-content: flex-end;">
           <button mat-button type="reset" class="margin-right" (click)="close()">
-            CANCEL
+            MÉGSEM
           </button>
-          <button mat-raised-button type="submit" color="primary">
-            SAVE
+          <button mat-raised-button type="submit" color="primary" (click)="update()">
+            MENTÉS
           </button>
         </div>
       </form>

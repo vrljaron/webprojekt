@@ -15,6 +15,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ContainerModule } from 'src/app/shared/components/container/container.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ContainerModule } from 'src/app/shared/components/container/container.m
     MatRadioModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatProgressSpinnerModule
   ],
   exports: [DetailsComponent]
 })
